@@ -4,6 +4,7 @@ pipeline {
     environment{
         NETLIFY_SITE_ID = '5643e5b4-05c8-4407-a65c-a62782a64269'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+        REACT_APP_VERSION='1.2.3'
     }
 
     stages {
@@ -99,15 +100,15 @@ pipeline {
                 }
             }
         }
-        stage('Approval'){
-            steps{
-                timeout(time: 15, unit: 'MINUTES'){
-                    input message: "Do you wish to deploy to production?", ok: "yes, I am sure!"
-                }
+        // stage('Approval'){
+        //     steps{
+        //         timeout(time: 15, unit: 'MINUTES'){
+        //             input message: "Do you wish to deploy to production?", ok: "yes, I am sure!"
+        //         }
                 
-            }
+        //     }
             
-        }
+        // }
         stage('Deploy prod'){
             agent{
                 docker{
