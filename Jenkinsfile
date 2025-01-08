@@ -1,12 +1,12 @@
 pipeline {
     agent any
 
-    environment{
+    environment {
         REACT_APP_VERSION="1.0.$BUILD_ID"
-        
+        // NETLIFY_SITE_ID = '5643e5b4-05c8-4407-a65c-a62782a64269'
+        // NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
-    // NETLIFY_SITE_ID = '5643e5b4-05c8-4407-a65c-a62782a64269'
-    // NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+    
 
     stages {
         
@@ -36,9 +36,9 @@ pipeline {
                     reuseNode true
                 }
             }
-            environment{
-                // AWS_S3_BUCKET = 'learn-jenkins-757'
-            }
+            // environment{
+            //     AWS_S3_BUCKET = 'learn-jenkins-757'
+            // }
             steps{
                 withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
                     sh '''
