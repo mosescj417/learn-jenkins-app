@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         REACT_APP_VERSION="1.0.$BUILD_ID"
+        AWS_DEFAULT_REGION = 'us-west-2'
         // NETLIFY_SITE_ID = '5643e5b4-05c8-4407-a65c-a62782a64269'
         // NETLIFY_AUTH_TOKEN = credentials('netlify-token')
     }
