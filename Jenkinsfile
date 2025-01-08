@@ -51,6 +51,7 @@ pipeline {
                         docker push $AWS_DOCKER_REGISTRY/$APP_NAME:$REACT_APP_VERSION
                     
                     '''
+                }
             }
         }
         stage('Deploy to AWS'){
@@ -76,8 +77,8 @@ pipeline {
                         aws ecs wait services-stable --cluster $AWS_ECS_CLUSTER --services $AWS_ECS_SERVICE_PROD
                     '''
                 }
-                
             }
+                
         }
         // stage('Tests'){
         //     parallel{
@@ -190,5 +191,6 @@ pipeline {
     
         
     }
+    
     
 }
